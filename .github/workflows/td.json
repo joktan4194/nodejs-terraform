@@ -14,22 +14,23 @@
                 }
             ],
             "essential": true,
-            "environment": [
-                {
-                    "name": "REDIS_PASSWORD",
-                    "value": "redispass"
-                },
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
                 {
                     "name": "API_KEY",
-                    "value": "apikey123"
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:020858641957:secret:app1-secrets-qdqYcw"
                 },
                 {
                     "name": "DB_PASSWORD",
-                    "value": "supersecret1"
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:020858641957:secret:app1-secrets-qdqYcw"
+                },
+                {
+                    "name": "REDIS_PASSWORD",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-1:020858641957:secret:app1-secrets-qdqYcw"
                 }
             ],
-            "mountPoints": [],
-            "volumesFrom": [],
             "systemControls": []
         }
     ],
@@ -42,6 +43,9 @@
     "requiresAttributes": [
         {
             "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "ecs.capability.secrets.asm.environment-variables"
         },
         {
             "name": "com.amazonaws.ecs.capability.task-iam-role"
@@ -67,7 +71,7 @@
     ],
     "cpu": "256",
     "memory": "512",
-    "registeredAt": "2026-01-24T04:23:40.328Z",
+    "registeredAt": "2026-01-24T05:43:14.482Z",
     "registeredBy": "arn:aws:iam::020858641957:user/Terraform",
     "tags": []
 }
