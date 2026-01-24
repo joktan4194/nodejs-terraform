@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:020858641957:task-definition/app",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:020858641957:task-definition/app1",
     "containerDefinitions": [
         {
-            "name": "app",
-            "image": "020858641957.dkr.ecr.us-east-1.amazonaws.com/app_repo",
+            "name": "app1",
+            "image": "020858641957.dkr.ecr.us-east-1.amazonaws.com/app1",
             "cpu": 256,
             "memory": 512,
             "portMappings": [
@@ -14,13 +14,26 @@
                 }
             ],
             "essential": true,
-            "environment": [],
+            "environment": [
+                {
+                    "name": "REDIS_PASSWORD",
+                    "value": "redispass"
+                },
+                {
+                    "name": "API_KEY",
+                    "value": "apikey123"
+                },
+                {
+                    "name": "DB_PASSWORD",
+                    "value": "supersecret1"
+                }
+            ],
             "mountPoints": [],
             "volumesFrom": [],
             "systemControls": []
         }
     ],
-    "family": "app",
+    "family": "app1",
     "taskRoleArn": "arn:aws:iam::020858641957:role/app-task-role",
     "executionRoleArn": "arn:aws:iam::020858641957:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
@@ -46,15 +59,76 @@
     "placementConstraints": [],
     "compatibilities": [
         "EC2",
-        "FARGATE",
-        "MANAGED_INSTANCES"
+        "MANAGED_INSTANCES",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
         "FARGATE"
     ],
     "cpu": "256",
     "memory": "512",
-    "registeredAt": "2026-01-20T12:50:32.948Z",
+    "registeredAt": "2026-01-24T04:23:40.328Z",
     "registeredBy": "arn:aws:iam::020858641957:user/Terraform",
     "tags": []
 }
+
+// {
+//     "taskDefinitionArn": "arn:aws:ecs:us-east-1:020858641957:task-definition/app",
+//     "containerDefinitions": [
+//         {
+//             "name": "app",
+//             "image": "020858641957.dkr.ecr.us-east-1.amazonaws.com/app_repo",
+//             "cpu": 256,
+//             "memory": 512,
+//             "portMappings": [
+//                 {
+//                     "containerPort": 80,
+//                     "hostPort": 80,
+//                     "protocol": "tcp"
+//                 }
+//             ],
+//             "essential": true,
+//             "environment": [],
+//             "mountPoints": [],
+//             "volumesFrom": [],
+//             "systemControls": []
+//         }
+//     ],
+//     "family": "app",
+//     "taskRoleArn": "arn:aws:iam::020858641957:role/app-task-role",
+//     "executionRoleArn": "arn:aws:iam::020858641957:role/ecsTaskExecutionRole",
+//     "networkMode": "awsvpc",
+//     "volumes": [],
+//     "status": "ACTIVE",
+//     "requiresAttributes": [
+//         {
+//             "name": "com.amazonaws.ecs.capability.ecr-auth"
+//         },
+//         {
+//             "name": "com.amazonaws.ecs.capability.task-iam-role"
+//         },
+//         {
+//             "name": "ecs.capability.execution-role-ecr-pull"
+//         },
+//         {
+//             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+//         },
+//         {
+//             "name": "ecs.capability.task-eni"
+//         }
+//     ],
+//     "placementConstraints": [],
+//     "compatibilities": [
+//         "EC2",
+//         "FARGATE",
+//         "MANAGED_INSTANCES"
+//     ],
+//     "requiresCompatibilities": [
+//         "FARGATE"
+//     ],
+//     "cpu": "256",
+//     "memory": "512",
+//     "registeredAt": "2026-01-20T12:50:32.948Z",
+//     "registeredBy": "arn:aws:iam::020858641957:user/Terraform",
+//     "tags": []
+// }
